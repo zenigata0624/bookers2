@@ -1,0 +1,2 @@
+class Postbook < ApplicationRecord
+end

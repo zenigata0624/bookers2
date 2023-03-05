@@ -1,6 +1,7 @@
+
 <% @books.each do |book| %>
 <div>
-  <p>ショップ名：<%=book.book_name %></p>
+  <p>Book名：<%=book.book_name %></p>
   <p>説明：<%= book.caption %></p>
   <p>ユーザーネーム：<%= book.user.name %></p>
    <% if book.user == current_user %>

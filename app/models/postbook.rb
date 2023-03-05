@@ -1,2 +1,0 @@
-class Postbook < ApplicationRecord
-end

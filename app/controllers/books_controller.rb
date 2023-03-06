@@ -10,9 +10,10 @@ def create
   @book.save
   redirect_to books_path
 end
-
+  
+  
   def index
-    @books = Book.all
+    @books =Book.all
   end
 
   def show

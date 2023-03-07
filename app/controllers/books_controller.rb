@@ -14,9 +14,12 @@ end
   
   def index
     @books =Book.all
+    @user = current_user
   end
 
   def show
+    @books =Book.all
+    @user = current_user
   end
   
   def destroy

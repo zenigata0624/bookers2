@@ -18,8 +18,13 @@ end
   end
 
   def show
-    @books =Book.all
-    @user = current_user
+    @user = User.find(params[:id])
+    @books = @user.books
+  end
+  
+  def edit
+      @book= Book.find(params[:id])
+      @user= current_user
   end
   
   def destroy

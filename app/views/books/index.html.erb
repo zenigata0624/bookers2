@@ -53,10 +53,7 @@
             <%= image_tag book.user.get_profile_image(100,100) %>
             </td>
             <td>
-            <%=link_to book.user do%>
-            <%=book.book_name %>
-           <%end%>
-           </td>
+            <%=link_to book.book_name, book_path(book.id)  %>
          <td><%= book.caption %></td>
         </tr>
         <%end%>

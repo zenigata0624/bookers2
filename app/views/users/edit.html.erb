@@ -16,7 +16,7 @@
     <%= form_with model: @user do |f| %>
     <div class="form_group mb-3">
      <h5>Name</h5>
-     <%=f.text_field :name, autfocus: true, id: "inputName"%>
+     <%=f.text_field :name, autfocus: true, id: "inputName" , size: 30 %>
     </div>
      <div class="form_group mb-3">
       <h5>Image</h5>
@@ -24,7 +24,7 @@
      </div>
       <div class="form_group mb-3">
        <h5>Introduction</h5>
-       <%= f.text_area :introduction %>
+       <%= f.text_area :introduction , size: "33×33" %>
       </div>
       <div class="form_button">
       <%= f.submit "Update User" %>

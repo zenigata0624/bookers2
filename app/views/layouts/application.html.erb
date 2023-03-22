@@ -35,7 +35,6 @@
      <a class="nav-link text-light" href="/books">
        <i class="fas fa-book-open"></i>Books</a>
       </li>
-
       <li>
         <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
           <i class="fas fa-sign-out-alt"></i>Log out</a>
@@ -65,6 +64,11 @@
       </div>
     </div>
   </nav>
+  <div class="pl-5">
+   <% if user_signed_in? %>
+   <%= render "layouts/search" %>
+   <% end %>
+   </div>
   </header>
     <%= yield %>
     <footer>

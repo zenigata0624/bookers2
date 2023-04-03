@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  before_action :correct_user,only: [:edit,:update]
+  before_action :correct_user,only: [:edit,:update,]
 
   def new
     @book = Book.new
@@ -21,13 +21,19 @@ class BooksController < ApplicationController
 
 
   def index
-    @books =Book.page(params[:page])
-    @user = current_user
-    @book = Book.new
+    to  = Time.current.at_end_of_day
+      from  = (to - 6.day).at_beginning_of_day
+    books = Book.includes(:favorites).sort_by {|x| x.favorites.where(created_at: from...to).size}.reverse
+     @book = Book.new
+     @books=Kaminari.paginate_array(books).page(params[:page]).per(10)
+     @user = current_user
   end
 
   def show
     @book =Book.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
+    end
     @user = User.find_by(id: @book.user_id)
     @book_comment = BookComment.new
   end

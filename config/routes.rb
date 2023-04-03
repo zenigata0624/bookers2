@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'followings/followers'
   devise_for :users
   root to: 'home#top'
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
    resource :favorites, only: [:create,:destroy]
    resources :book_comments,only: [:create,:destroy]
   end
+  
+  resources :chats, only: [:show,:create]
   
   resources :users, only: [:show,:edit,:update,:index,]  do
       member do

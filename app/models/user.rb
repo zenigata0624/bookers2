@@ -6,11 +6,13 @@ class User < ApplicationRecord
 
           has_many :books, dependent: :destroy
           has_many :book_comments, dependent: :destroy
+         
+          has_many :group_users
+          has_many :groups, through: :group_users
+           
           has_many :favorites, dependent: :destroy
-          
           has_many :relationships,class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
           has_many :reverse_relationships,class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy
-          
           has_many :followings, through: :relationships,source: :followed
           has_many :followers,through: :reverse_relationships, source: :follower
           
@@ -19,9 +21,8 @@ class User < ApplicationRecord
           has_many :chats
           
           has_many :view_counts, dependent: :destroy
-          
+      
           has_one_attached :profile_image
-         
          validates :name, uniqueness: true
          validates :name, length: { in: 2..20 }
          validates :introduction ,

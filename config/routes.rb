@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :posts
   get 'followings/followers'
   devise_for :users
   root to: 'home#top'

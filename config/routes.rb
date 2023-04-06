@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   root to: 'home#top'
   get  'home/about'
   get "search" => "searches#search"
-  resources :groups,except: [:destroy]
+  
+  resources :groups do
+    get "join" => "groups#join"
+  end
+  
   resources :books, only: [:new,:create, :index, :show, :edit ,:update, :destroy ] do
    resource :favorites, only: [:create,:destroy]
    resources :book_comments,only: [:create,:destroy]

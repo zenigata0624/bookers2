@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   resources :groups do
     get "join" => "groups#join"
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
   end
   
   resources :books, only: [:new,:create, :index, :show, :edit ,:update, :destroy ] do

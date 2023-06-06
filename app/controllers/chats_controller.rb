@@ -13,9 +13,9 @@ class ChatsController < ApplicationController
       UserRoom.create(user_id: @user.id, room_id: chat_room.id)
     else
       chat_room = user_rooms.room 
+      @chats = chat_room.chats
+      @chat = Chat.new(room_id: chat_room.id) 
     end
-    @chats = chat_room.chats
-    @chat = Chat.new(room_id: chat_room.id) 
   end
   
   def create
@@ -36,4 +36,5 @@ class ChatsController < ApplicationController
       redirect_to books_path
     end
  end
+ 
 end

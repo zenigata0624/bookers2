@@ -1,6 +1,5 @@
- <body>
+
    <%= render "books/flash" %>
-  </body>
 <div class ='container px-5 px-sm-0'>
  <div class='row'>
   <div class="col-md-3">
@@ -35,10 +34,9 @@
              <td id="favorite_buttons_<%= @book.id %>">
               <%= render "favorites/favorite", book: @book %>
             </td>
-             <td id = "comments-area-counter"> 
+             <td id = "comments-area-counter">
                <%= render "book_comments/counter", book: @book %>
               </td>
-              <td>閲覧数: <%= @book.view_counts.count %></td>
             <% if @book.user == current_user %>
              <td>
                <%=link_to "Edit", edit_book_path %>
@@ -50,7 +48,7 @@
           </tr>
        </tbody>
     </table>
-     <div id= "comments-area-index"> 
+     <div id= "comments-area-index">
        <%= render "book_comments/comment", book: @book ,book_comment: @book_comment  %>
        </div>
      </div>

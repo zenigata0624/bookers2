@@ -11,10 +11,33 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application" 
+import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+import { gsap } from "gsap/all";
+
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
+
+document.addEventListener('turbolinks:load', function() {
+const element = document.querySelector('.element');
+
+gsap.to('.element', {
+  opacity: 0,
+  y: 100,
+  duration: 1
+});
 
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+function handleScroll() {
+ const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  gsap.to('.element', {
+    opacity: 0,
+    y: 100,
+    duration: 1
+  });
+}
+
+window.addEventListener('scroll', handleScroll);
+});
